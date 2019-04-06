@@ -141,21 +141,38 @@ var cy = cytoscape({
   layout: {
       name: 'circle',
       rows: 1
-  }
-});
+  },
 
-// $('.container .row .info').html("Please select any node");
+  motionBlur: true
+});
 
 cy.on('tap', 'node', function(evt){
   var data = evt.target._private.data;
-  console.log(data.name);
-  $('.container .row .info .name .data').html(data.name);
-  $('.container .row .info .cost .data').html("Rs " + data.cost);
-  $('.container .row .info .ram .data').html(data.ram + "GB");
-  $('.container .row .info .storage .data').html(data.storage + "GB");
-  $('.container .row .info .battery .data').html(data.battery  + "mAh");
-  $('.container .row .info .description .data').html(data.description);
+
+  if(data.id != 0) {
+    cy.$('#1, #2, #3, #4, #5').removeStyle();
+    cy.$('#'+data.id).style('border-color', 'red');
+  
+    $('.container .row .info .message').css("display", "none");
+    $('.container .row .info .content').css("display", "block");
+  
+    $('.container .row .info .content .name .data').html(data.name);
+    $('.container .row .info .content .cost .data').html("Rs " + data.cost);
+    $('.container .row .info .content .ram .data').html(data.ram + "GB");
+    $('.container .row .info .content .storage .data').html(data.storage + "GB");
+    $('.container .row .info .content .battery .data').html(data.battery  + "mAh");
+    $('.container .row .info .content .description .data').html(data.description);  
+  } else {
+    cy.$('#1, #2, #3, #4, #5').removeStyle();
+
+    $('.container .row .info .message').css("display", "block");
+    $('.container .row .info .content').css("display", "none");
+  }
+  
 });
+
+cy.$('#0').style('background-color', 'black');
+cy.$('#0').unselectify();
 
 // var j = cy.$('#0');
 // cy.center( j );

@@ -60,6 +60,15 @@ body {
   border: 1px solid black;
 }
 
-.container .row .info p .title {
+.container .row .info .heading {
+  text-align: center;
+}
+
+.container .row .info .content p .title,
+.container .row .info .message p {
   font-weight: 600;
+}
+
+.container .row .info .content {
+  display: none;
 }

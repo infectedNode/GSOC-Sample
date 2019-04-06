@@ -73,9 +73,9 @@ body {
 
 @media(max-width: 400px){
   #cy {
-    height: 220px;
+    height: 290px;
   }
   .container .row .visual {
-    height: 200px;
+    height: 250px;
   }
 };
